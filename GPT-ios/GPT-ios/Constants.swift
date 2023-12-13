@@ -8,3 +8,4 @@
 import Foundation
 
 let SHOW_LIST_SEGUE_ID = "showListSegue"
+let CONVERSATION_CELL_ID = "conversationCell"
