@@ -8,8 +8,8 @@
 import Foundation
 
 class Conversation {
-    let title = "New Conversation"
-    let created_on = "01/13/2034"
+    var title: String
+    var created_on: String
     
     init(title: String, created_on: String) {
         self.title = title

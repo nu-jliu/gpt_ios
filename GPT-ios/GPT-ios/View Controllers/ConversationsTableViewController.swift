@@ -17,10 +17,19 @@ class ConversationsTableViewController: UITableViewController {
     
     var conversations = [Conversation]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(<#T##@objc method#>))
+        self.conversations.append(Conversation(title: "Test 1", created_on: "01/01/2022"))
+        self.conversations.append(Conversation(title: "Test 2", created_on: "02/02/2002"))
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(signoutPressed))
+    }
+    
+    
+    @objc func signoutPressed() {
+        AuthManager.shared.signOut()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +49,11 @@ class ConversationsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let conversation = self.conversations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: CONVERSATION_CELL_ID, for: indexPath) as! ConversationsTableViewCell
+        
+        cell.title.text = conversation.title
+        cell.createdOn.text = conversation.created_on
         
         return cell
     }
